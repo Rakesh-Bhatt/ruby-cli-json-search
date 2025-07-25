@@ -14,8 +14,9 @@ class JsonSearch
   # @param [String/Nil] file_path - file path of the json
   #
   def initialize(file_path: nil)
-    file_path = File.read('json/clients.json') if file_path.nil?
-    parsed_data = JSON.parse(file_path)
+    file_path = 'json/clients.json' if file_path.nil?
+    raw_data = File.read(file_path)
+    parsed_data = JSON.parse(raw_data)
     @clients = parsed_data.map { |attrs| Client.new(attrs) }
   end
 
@@ -39,7 +40,7 @@ class JsonSearch
   #
   def find_duplicates_by_email
     grouped = @clients.group_by(&:email)
-    matching_emails =  grouped.select { |_, group| group.size > 1 }.values.flatten
+    matching_emails = grouped.select { |_, group| group.size > 1 }.values.flatten
     matching_emails.map(&:print_each_client_record)
   end
 end
