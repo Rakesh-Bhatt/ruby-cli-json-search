@@ -30,4 +30,16 @@ class JsonSearch
     matching_clients = @clients.select { |client| client.full_name.downcase.include?(query.downcase) }
     matching_clients.map(&:print_each_client_record)
   end
+
+  #
+  # from the given clients list, groups the records by email and returns with record with matching
+  #   records more than one
+  #
+  # @return [Array] returns matching duplicate records
+  #
+  def find_duplicates_by_email
+    grouped = @clients.group_by(&:email)
+    matching_emails =  grouped.select { |_, group| group.size > 1 }.values.flatten
+    matching_emails.map(&:print_each_client_record)
+  end
 end
