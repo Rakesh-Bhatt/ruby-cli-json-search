@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "name": "John Smith",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "is_active": true
+  },
+  {
+    "id": 3,
+    "name": "Joe Smith",
+    "email": "joe.doe@example.com",
+    "age": 23,
+    "is_active": false
+  }
+]
