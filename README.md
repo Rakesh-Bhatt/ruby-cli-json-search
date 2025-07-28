@@ -21,3 +21,16 @@ chmod +x bin/cli
 ./bin/cli search_by_name
 ./bin/cli duplicates
 ```
+
+### Running Tests
+```bash
+# Full test suite
+bundle exec rspec
+
+# Test specific class
+bundle exec rspec spec/client_spec.rb
+bundle exec rspec spec/json_search_spec.rb
+
+# Test specific blocks, specify line or top level of block
+bundle exec rspec spec/json_search_spec.rb:20 #line
+```
