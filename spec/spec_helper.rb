@@ -13,14 +13,15 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'simplecov'
-require_relative '../client'
-require_relative '../json_search'
 
+require 'simplecov'
 SimpleCov.start do
   add_filter '/spec/'
   coverage_dir 'coverage'
 end
+
+require_relative '../client'
+require_relative '../json_search'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
