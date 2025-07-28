@@ -18,10 +18,20 @@ RSpec.describe JsonSearch do
   end
 
   describe '#search_by_name' do
-    context 'when matching result is received' do
+    context 'when name matching single records' do
       it 'finds clients by partial name' do
         results = searcher.search_by_name('alice')
         expect(results).to eq(['ID: 1, Name: Alice Johnson, Email: alice@example.com'])
+      end
+    end
+
+    context 'when name matches multiple records' do
+      multiple_match = ['ID: 1, Name: Alice Johnson, Email: alice@example.com',
+                        'ID: 2, Name: Alicia Keys, Email: alice@example.com']
+
+      it 'finds clients by partial name' do
+        results = searcher.search_by_name('alic')
+        expect(results).to eq(multiple_match)
       end
     end
 
