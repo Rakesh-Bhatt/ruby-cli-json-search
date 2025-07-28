@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'pry'
+require_relative '../json_search'
+
+DATA_PATH = File.expand_path('../json/clients.json', __dir__)
+all_json_data = JsonSearch.new(file_path: DATA_PATH)
+
+command = ARGV[0]
+search_name = ARGV[1]
+
+case command
+when 'search_by_name'
+  if search_name.nil?
+    puts 'Please add search parameter, How to use?'
+    puts 'Usages: search <search your name>'
+    exit
+  end
+
+  results = all_json_data.search_by_name(search_name)
+  if results.empty?
+    puts 'No client record found matching name.'
+  else
+    puts 'Matching clients are:'
+    puts results
+  end
+
+when 'duplicates'
+  duplicates = all_json_data.find_duplicates_by_email
+  if duplicates.empty?
+    puts 'No duplicate emails found in the JSON'
+  else
+    puts 'Clients with duplicate emails:'
+    puts duplicates
+  end
+else
+  puts 'Usage:'
+  puts '  search <query>     - Search clients by name'
+  puts '  duplicates         - Show duplicate emails'
+end
