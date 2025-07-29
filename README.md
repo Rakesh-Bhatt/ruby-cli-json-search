@@ -66,4 +66,10 @@ curl "http://localhost:3000/query?q=alice&field=name&file=different_json.json"
 # few additional use cases
 curl "http://localhost:3000/query?q=true&field=is_active&file=different_json.json"
 curl "http://localhost:3000/query?q=false&field=is_active&file=different_json.json"
+
+# in case any error occurred during the process of making curl request, we need to restart the puma server.
 ```
+
+### Possible improvements that we can make to system
+1. searching multiple fields at once
+2. uploading json instead of manually creating into json file via endpoint
