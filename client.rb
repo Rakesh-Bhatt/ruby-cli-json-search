@@ -25,4 +25,15 @@ class Client
   def print_each_client_record
     "ID: #{id}, Name: #{full_name}, Email: #{email}"
   end
+
+  #
+  # converts the available instance variables in string, maps key with value
+  #
+  # @return [String] all the available values
+  #
+  def convert_string
+    instance_variables.map do |var|
+      "#{var.to_s.delete('@')}: #{instance_variable_get(var)}"
+    end.join(', ')
+  end
 end
